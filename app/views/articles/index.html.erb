@@ -1,0 +1,27 @@
+    <%= link_to "+ Add Articles ", new_article_path , class:"text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center " %>
+<div class="bg-white" >
+    <h1>Articles</h1>
+    <div>
+        <table class="" >
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @articles.each do |article| %>
+                    <tr>
+                        <td><%= article.title %></td>
+                        <td><%= article.content %></td>
+                        <td>
+                            <a href="#" class="text-blue-700 hover:underline">Edit</a>
+                            <%= button_to "Delete", article_path(article.id), method: :delete %>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

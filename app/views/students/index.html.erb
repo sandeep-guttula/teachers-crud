@@ -1,0 +1,27 @@
+<div class="bg-white" >
+    <h1>Articles</h1>
+    <div>
+        <table class="" >
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Content</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @articles.each do |article| %>
+                    <tr>
+                        <td><%= article.id %></td>
+                        <td><%= article.title %></td>
+                        <td><%= article.content %></td>
+                        <td>
+                            <%= link_to "Show", article_path(article.id) %>
+                        </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

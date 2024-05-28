@@ -1,0 +1,52 @@
+<div class="bg-red-200 mt-5 w-full h-full flex justify-center	items-center flex-col" >
+    <% if current_teacher %>
+            <%= link_to "+ Add Student ", new_student_path , class:"text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center " %>
+            <div class="flex flex-col">
+
+          
+        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+            <div class="overflow-hidden">
+                <table class="min-w-full text-left text-sm font-light text-surface ">
+                  <thead
+                      class="border-b border-neutral-200 font-medium ">
+                      <tr>
+                      <th scope="col" class="px-6 py-4">#</th>
+                      <th scope="col" class="px-6 py-4">Name</th>
+                      <th scope="col" class="px-6 py-4">Email</th>
+                      <th scope="col" class="px-6 py-4">Actions</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <% @students.each do |student| %>
+                          <tr class="border-b border-neutral-200 ">
+                              <td class="whitespace-nowrap px-6 py-4 font-medium"> <%= student.id %> </td>
+                              <td class="whitespace-nowrap px-6 py-4"> <%= student.name %> </td>
+                              <td class="whitespace-nowrap px-6 py-4"> <%= student.email %> </td>
+                              <td class="whitespace-nowrap px-6 py-4">
+                                  <a href="#" class="text-blue-700 hover:underline">Edit</a>
+                                  <%= button_to "Delete", student_path(student.id), method: :delete %>
+                              </td>
+                          </tr>
+                      <% end %>
+                  </tbody>
+                </table>
+            </div>
+            </div>
+        </div>
+
+        </div>
+
+        <div>
+          <%= link_to "Go to Articles ", articles_path , class:"text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center " %>
+        <div>
+    <% else %>
+        <h1>Welcome Guest Teacher </h1>
+        <p>Sign up to get started</p>
+        <%
+=begin%>
+ <%= link_to "Sign Up", teacher_sign_up_path, class:"text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center " %> 
+<%
+=end%>
+    <% end %>
+</div>

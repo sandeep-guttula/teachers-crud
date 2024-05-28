@@ -1,0 +1,19 @@
+<nav class="bg-white  fixed w-full z-20 top-0 start-0 border-b border-gray-200">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <span class="self-center text-2xl font-semibold whitespace-nowrap ">Artic</span>
+        </a>
+        <div class="flex  md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse px-4 ">
+            <% if current_teacher %>
+                <p class="text-gray-700 px-4" > Hey <span class ="text-xl font-semibold	" > <%= current_teacher.name%> </span> </p>
+                <%= button_to "Logout", teacher_session_path(current_teacher.id), method: :delete, class:"text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center" %>
+            <% elsif current_student %>
+                <p class="text-gray-700 px-4" > Hey <span class ="text-xl font-semibold	" > <%= current_student.name%> </span> </p>
+                <%= button_to "Logout", student_session_path(current_student.id), method: :delete, class:"text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center" %>
+            <% else %>
+                <%= link_to "Teachers", new_teacher_path , class:"text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center " %> 
+                <%= link_to "Students", new_student_session_path , class:"text-blue-700  hover:bg-blue-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center" %> 
+            <% end %>
+        </div>
+    </div>
+</nav>
