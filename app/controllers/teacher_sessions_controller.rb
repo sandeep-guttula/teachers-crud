@@ -6,6 +6,7 @@ class TeacherSessionsController < ApplicationController
   def create
     teacher = Teacher.find_by(email: params[:email])
     if teacher && teacher.authenticate(params[:password])
+
       session[:teacher_id] = teacher.id
       redirect_to teachers_path, notice: "Logged in successfully"
     else

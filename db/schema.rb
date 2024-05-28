@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_27_065523) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_28_044716) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -28,6 +28,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_065523) do
     t.datetime "updated_at", null: false
     t.index ["article_id"], name: "index_comments_on_article_id"
     t.index ["student_id"], name: "index_comments_on_student_id"
+  end
+
+  create_table "currents", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "students", force: :cascade do |t|
@@ -48,8 +53,21 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_27_065523) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_active_sessions", force: :cascade do |t|
+    t.string "session_id"
+    t.integer "teacher_id"
+    t.boolean "status"
+    t.integer "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_user_active_sessions_on_student_id"
+    t.index ["teacher_id"], name: "index_user_active_sessions_on_teacher_id"
+  end
+
   add_foreign_key "articles", "teachers"
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "students"
   add_foreign_key "students", "teachers"
+  add_foreign_key "user_active_sessions", "students"
+  add_foreign_key "user_active_sessions", "teachers"
 end

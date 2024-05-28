@@ -14,6 +14,9 @@ class TeachersController < ApplicationController
   def create
     @teacher = Teacher.new(teacher_params)
     if @teacher.save
+
+      session_id = SecureRandom.uuid
+      @teacher_session = UserActiveSession.new(session_id: session_id, user_id: @teacher.id, user_type: "Teacher")
       session[:teacher_id] = @teacher.id
       redirect_to teachers_path, notice: "Teacher created successfully"
     else
