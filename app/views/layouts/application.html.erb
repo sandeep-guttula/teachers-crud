@@ -12,8 +12,9 @@
   </head>
 
   <body>
-    <%= render "shared/navbar" %>
+    <%= render partial: "shared/navbar" %>
     <main class="bg-blue-100 h-screen w-screen flex justify-center	items-center flex-col ">
+      <%= render partial: "shared/flash" %>
       <%= yield %>
     </main>
 

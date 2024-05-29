@@ -1,0 +1,2 @@
+class UserActiveSession < ApplicationRecord
+end

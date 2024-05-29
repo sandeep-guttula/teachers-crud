@@ -19,7 +19,9 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.where(teacher_id: current_teacher.id)
+    if session[:teacher_id]
+      @articles = Article.where(teacher_id: TeacherActiveSession.find_by(session_id: session[:teacher_id]).teacher_id)
+    end
   end
 
   def add_comment

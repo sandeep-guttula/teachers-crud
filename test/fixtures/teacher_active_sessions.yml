@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  session_id: MyString
+  teacher: one
+  status: MyString
+  session_expiry: 2024-05-28 12:05:29
+
+two:
+  session_id: MyString
+  teacher: two
+  status: MyString
+  session_expiry: 2024-05-28 12:05:29
